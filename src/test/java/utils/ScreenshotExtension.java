@@ -24,20 +24,20 @@ public class ScreenshotExtension implements TestWatcher {
                 "png",
                 ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES)
         );
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
     @Override
     public void testSuccessful(ExtensionContext context) {
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
-
+    @SneakyThrows
     @Override
     public void testAborted(ExtensionContext context, Throwable cause)
     {
@@ -49,13 +49,13 @@ public class ScreenshotExtension implements TestWatcher {
                 "png",
                 ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES)
         );
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
     private WebDriver getDriver(ExtensionContext context) {
         Object instance = context.getRequiredTestInstance();
         try {
-            Field field = instance.getClass().getDeclaredField("driver");
+            Field field = instance.getClass().getSuperclass().getDeclaredField("driver");
             field.setAccessible(true);
             return ((ThreadLocal<WebDriver>)field.get(instance)).get();
         }
