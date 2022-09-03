@@ -1,4 +1,4 @@
-package web.findby.page;
+package web.pages.rambler;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -6,9 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import web.findby.elements.Button;
-import web.findby.elements.EditBox;
-import web.findby.elements.IFrame;
+import web.elements.Button;
+import web.elements.EditBox;
+import web.elements.IFrame;
+import web.pages.BasePage;
 
 public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[text()='Вход']")

@@ -1,4 +1,4 @@
-package web.findby.page;
+package web.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,12 +8,14 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.JSExecutor;
-import web.findby.elements.ElementsDecorator;
+import config.TestConfigFactory;
+import web.elements.ElementsDecorator;
 
 import java.time.Duration;
 
 public abstract class BasePage {
-    protected static final String BASE_URL = "https://www.rambler.ru";
+    private static TestConfigFactory config = TestConfigFactory.getInstance();
+    protected static final String BASE_URL = config.getWebConfig().getBaseUrl();
     private static final Duration DEFAULT_TIMEOUT_SECONDS = Duration.ofSeconds(10);
 
     protected WebDriver driver;

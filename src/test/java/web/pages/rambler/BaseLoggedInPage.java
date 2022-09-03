@@ -1,4 +1,4 @@
-package web.findby.page;
+package web.pages.rambler;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
@@ -6,6 +6,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import web.pages.BasePage;
 
 public class BaseLoggedInPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(), '@rambler.ru')]")

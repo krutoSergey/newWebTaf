@@ -1,28 +1,31 @@
-package web.findby.tests;
+package web.tests.rambler;
 
+import enums.Users;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import web.findby.page.LoginPage;
+import web.pages.rambler.LoginPage;
+import web.tests.BaseTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Тесты на логин")
 @Feature("Login feature")
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
     @Test
     @DisplayName("Успешный логин")
     @Story("JIRA-1")
     @Description("Тест на проверку успешного логина при правилном введенном логине и пароле")
     public void login(){
+        Users.User user = Users.RAMBLER_STANDARD_USER.getUser();
         Assertions.assertTrue(
                 new LoginPage(driver.get())
-                        .loginAs(email, password)
-                        .isLoggedInAs(email)
+                        .loginAs(user.getUsername(), user.getPassword())
+                        .isLoggedInAs(user.getUsername())
         );
     }
 
@@ -31,10 +34,11 @@ public class LoginTest extends BaseTest{
     @Story("JIRA-1")
     public void loginWithBadPassword(){
         LoginPage page = new LoginPage(driver.get());
+        Users.User user = Users.RAMBLER_STANDARD_USER.getUser();
         Assertions.assertFalse(
                 page
-                        .loginAs(email, "WRONG_VALUE")
-                        .isLoggedInAs(email)
+                        .loginAs(user.getUsername(), "WRONG_VALUE")
+                        .isLoggedInAs(user.getUsername())
         );
         assertThat(page.getErrorMessage().contains("Неправильная почта или пароль"));
     }

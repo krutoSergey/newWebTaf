@@ -1,4 +1,4 @@
-package web.findby.config;
+package config;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigBeanFactory;

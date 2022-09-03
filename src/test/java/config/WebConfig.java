@@ -1,11 +1,11 @@
-package web.findby.config;
+package config;
 
 import lombok.Data;
-import web.findby.WebDriverFactory;
+import web.WebDriverFactory;
 
 @Data
 public class WebConfig {
     private String baseUrl;
-    private WebDriverFactory.Browser browser;
+    private WebDriverFactory.BrowserType browserType;
     private String webDriverPath;
 }

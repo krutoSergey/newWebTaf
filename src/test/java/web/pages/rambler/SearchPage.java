@@ -1,4 +1,4 @@
-package web.findby.page;
+package web.pages.rambler;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,15 +1,15 @@
-package web.findby;
+package web;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import web.findby.config.TestConfigFactory;
+import config.TestConfigFactory;
 
 public class WebDriverFactory {
     private static TestConfigFactory config = TestConfigFactory.getInstance();
 
     public static WebDriver getWebDriver(){
-        switch (config.getWebConfig().getBrowser()){
+        switch (config.getWebConfig().getBrowserType()){
             case FIREFOX:
                 return new FirefoxDriver();
             case CHROME:
@@ -18,7 +18,7 @@ public class WebDriverFactory {
         }
     }
 
-    public enum Browser{
+    public enum BrowserType {
         CHROME, FIREFOX
     }
 
